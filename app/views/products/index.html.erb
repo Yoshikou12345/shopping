@@ -1,0 +1,19 @@
+<h1>商品一覧</h1>
+<div>
+<%= label_tag '商品１（コーラ、130円）' %><%= link_to '削除', cart_path %>　<%= link_to 'カート追加', cart_path %>
+</div>
+<div>
+<%= label_tag '商品２（ソーダ、120円）' %><%= link_to '削除', cart_path %>　<%= link_to 'カート追加', cart_path %>
+</div>
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= product.name %> - 価格: <%= number_to_currency(product.price) %>
+      <%= link_to 'カートに追加', add_to_cart_path(product_id: product.id), method: :post %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to '商品を追加する', cart_path %>
+<div>
+<%= link_to 'カートを見る', cart_path %>
+</div>
